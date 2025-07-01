@@ -1,0 +1,62 @@
+{
+  "camping": [
+    {
+      "id": "desert-night-camp",
+      "title": "Desert Night Camp",
+      "image": "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+      "tariff": "$120",
+      "description": "Experience the magic of the desert with a private camping adventure under the stars. Enjoy serene landscapes and a cozy campfire in this unforgettable retreat.",
+      "activities": ["Star gazing", "Camel riding", "Desert storytelling"],
+      "gallery": [
+        "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+        "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+        "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+        "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg"
+      ]
+    },
+    {
+      "id": "camp2",
+      "title": "Coastal Camp Retreat",
+      "image": "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+      "tariff": "$80",
+      "description": "Relax by the sea with this coastal camping adventure. Enjoy beachside relaxation, stunning sunsets, and the sound of waves.",
+      "activities": ["Beach yoga", "Kayaking", "Bonfire evenings"],
+      "gallery": [
+        "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+        "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+        "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+        "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg"
+      ]
+    }
+  ],
+  "hiking": [
+    {
+      "id": "hike1",
+      "title": "Mountain Peak Trek",
+      "image": "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+      "tariff": "$100",
+      "description": "Challenge yourself with a trek to the mountain peaks. Enjoy breathtaking views and rugged trails in this exhilarating adventure.",
+      "activities": ["Guided hiking", "Rock climbing", "Nature photography"],
+      "gallery": [
+        "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+        "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+        "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+        "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg"
+      ]
+    },
+    {
+      "id": "hike2",
+      "title": "Forest Trail Hike",
+      "image": "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+      "tariff": "$90",
+      "description": "Explore lush forests with this guided hiking adventure. Discover hidden trails and enjoy the tranquility of nature.",
+      "activities": ["Bird watching", "Forest exploration", "Trail running"],
+      "gallery": [
+        "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+        "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+        "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+        "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Pro Hiking Backpack",
+    "category": "Hiking",
+    "price": 279.900,
+    "image": "https://imgs.search.brave.com/HAvxCg1wun0CB9ufEWIWDagPSDdSDL70qIa5Qqi8ovs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kazBm/a2p5Z2JuOXZ1LmNs/b3VkZnJvbnQubmV0/L2NhY2hlLWJ1c3Rl/ci0xMTc0NzY5OTQy/My9kZXV0ZXIvbWVk/aWFyb29tL3Byb2R1/Y3QtaW1hZ2VzL2Jh/Y2twYWNrcy9oaWtp/bmctYmFja3BhY2tz/LzM3MzczL2ltYWdl/LXRodW1iX18zNzM3/M19fZGV1dGVyX3By/b2R1Y3QtaW1nLzM0/MDE0MjEtNzQwMy1G/dXR1cmFfUHJvXzQy/X0VMLWQwNi5wbmc",
+    "description": "Durable 50L backpack with waterproof material."
+  },
+  {
+    "id": 2,
+    "name": "Climbing Rope",
+    "category": "Climbing",
+    "price": 185.900,
+    "image": "https://imgs.search.brave.com/CTPYjiYe_atet-3NhTc0knfDDj5nsCUAszA2twHR7g0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmcu/cG5ndHJlZS5jb20v/cG5nLXZlY3Rvci8y/MDI0MDUzMS9vdXJt/aWQvcG5ndHJlZS1j/bGltYmluZy1yb3Bl/LXdpdGgtYS1zZWN1/cmUta25vdC1hbmQt/Y2FyYWJpbmVyLXBu/Zy1pbWFnZV8xMjUx/NDU4OS5wbmc",
+    "description": "10mm dynamic rope, 60m length."
+  },
+  {
+    "id": 3,
+    "name": "Camping Tent",
+    "category": "Camping",
+    "price": 399.900,
+    "image": "https://imgs.search.brave.com/QOBNwZ00bsDViA3KBVLp8jpIrm90tn8Pm4g1nVtTpso/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDkv/MDkyLzk2OS9zbWFs/bC9vdXRkb29yLWNh/bXBpbmctdGVudC13/aXRoLW9wZW4tZnJv/bnQtZmxhcC1pc29s/YXRlZC10cmFuc3Bh/cmVudC1wbmcucG5n",
+    "description": "Lightweight 2-person tent with easy setup."
+  },
+  {
+    "id": 4,
+    "name": "Hiking Boots",
+    "category": "Hiking",
+    "price": 249.900,
+    "image": "https://imgs.search.brave.com/y3T4gshtK-MAUpgZYUbN_V2wXu-N-f-_tTrIOkPpBgc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTgv/MDQ2LzQ3Mi9zbWFs/bC9kdXJhYmxlLWhp/a2luZy1ib290cy1m/b3Itb3V0ZG9vci1h/ZHZlbnR1cmVzLWlu/LW5hdHVyZS1wbmcu/cG5n",
+    "description": "Waterproof boots with excellent grip."
+  },
+  {
+  "id": 5,
+  "name": "Portable Camping Stove",
+  "category": "Camping",
+  "price": 154.000,
+  "image": "https://imgs.search.brave.com/ez3tC9pNZ3K_DXLhMzRF7BZFwlEWJT1q99GSg3_8ZXI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzEtZzlpdEhtV0wu/anBn",
+  "description": "Compact stove with windscreen and fuel efficiency."
+},
+{
+    "id": 6,
+    "name": "Climbing Harness",
+    "category": "Climbing",
+    "price": 279.900,
+    "image": "https://imgs.search.brave.com/lRaC5ZMlrX1yuq6LFkesUjslVaRh0S6ggX5X9idIVcE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wdXJl/cG5nLmNvbS9wdWJs/aWMvdXBsb2Fkcy90/aHVtYm5haWwvY2xp/bWJpbmctaGFybmVz/cy04cnEucG5n",
+    "description": "Adjustable harness with safety features."
+},
+{
+    "id": 7,
+    "name": "Multi-tool Knife",
+    "category": "Camping",
+    "price": 99.500,
+    "image": "https://imgs.search.brave.com/re9lDCYs6ka3JTCo7bE33242na-CfQQyk1p0wypvfCQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvbXVsdGlfdG9v/bC9zbWFsbC9tdWx0/aV90b29sX1BORzQ1/LnBuZw",
+    "description": "Versatile knife with multiple tools  ."
+  },
+  {
+    "id": 8,
+    "name": "Insulated Water Bottle",
+    "category": "Camping",
+    "price": 77.400,
+    "image": "https://imgs.search.brave.com/07N2YKvS128mZlJeqt1Lr-QwV-5Po3iiQfUoCasdxrA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvMTMvV2hp/dGUtSHlkcm8tRmxh/c2stUE5HLUNsaXBh/cnQucG5n",
+    "description": "Keeps drinks hot or cold for hours."
+  }
+]

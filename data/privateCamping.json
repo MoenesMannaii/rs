@@ -1,0 +1,110 @@
+[
+  {
+    "id": "camp1",
+    "title": "The Hill - Nabeul Challenge",
+    "image": "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+    "duration": "2 Days",
+    "description": "Embark on an unforgettable adventure at The Hill in Nabeul. This private camping experience offers breathtaking views, serene landscapes, and a chance to reconnect with nature. Perfect for families and groups seeking a peaceful retreat.",
+    "activities": [
+      "Guided hill trekking",
+      "Campfire storytelling",
+      "Stargazing"
+    ],
+    "gallery": [
+      "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+      "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+      "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+      "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg"
+    ]
+  },
+  {
+    "id": "camp2",
+    "title": "Coastal Serenity - Hammamet",
+    "image": "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+    "duration": "1 Day",
+    "description": "Experience the tranquil beauty of Hammamet's coastline with this private camping adventure. Enjoy beachside relaxation, stunning sunsets, and a cozy campfire under the stars. Ideal for a quick getaway.",
+    "activities": [
+      "Beach relaxation",
+      "Sunset watching",
+      "Kayaking"
+    ],
+    "gallery": [
+      "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+      "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+      "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+      "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg"
+    ]
+  },
+  {
+    "id": "camp3",
+    "title": "Desert Oasis - Tozeur",
+    "image": "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+    "duration": "2 Days",
+    "description": "Discover the magic of the Tunisian desert with a private camping experience in Tozeur. Surrounded by golden sands and palm groves, this adventure offers a unique blend of relaxation and exploration.",
+    "activities": [
+      "Desert hiking",
+      "Camel riding",
+      "Oasis exploration"
+    ],
+    "gallery": [
+      "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+      "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+      "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+      "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg"
+    ]
+  },
+  {
+    "id": "camp4",
+    "title": "Mountain Escape - Zaghouan",
+    "image": "https://media.istockphoto.com/id/1384954174/fr/photo/zaghouan-mountain.jpg?s=612x612&w=0&k=20&c=o94DTXPjF8XFjAI3dXwSXVGWxknfwlgdpE2p0VFJlRs=",
+    "duration": "2 Days",
+    "description": "Explore the rugged beauty of Zaghouan with this private camping adventure. Nestled in the mountains, this retreat offers stunning vistas, hiking trails, and a serene escape from city life.",
+    "activities": [
+      "Mountain hiking",
+      "Rock climbing",
+      "Nature photography"
+    ],
+    "gallery": [
+      "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+      "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+      "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+      "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg"
+    ]
+  },
+  {
+    "id": "camp5",
+    "title": "Forest Haven - Ain Draham",
+    "image": "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+    "duration": "1 Day",
+    "description": "Immerse yourself in the lush forests of Ain Draham with this private camping experience. Enjoy nature walks, bird watching, and a peaceful night under the canopy of trees.",
+    "activities": [
+      "Nature walks",
+      "Bird watching",
+      "Forest meditation"
+    ],
+    "gallery": [
+      "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+      "https://images.pexels.com/photos/2666598/pexels-photo-2666598.jpeg",
+      "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg",
+      "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg"
+    ]
+  },
+  {
+    "id": "camp6",
+    "title": "Lakeside Retreat - Tabarka",
+    "image": "https://images.pexels.com/photos/1061640/pexels-photo-1061640.jpeg",
+    "duration": "2 Days",
+    "description": "Relax by the serene lakes of Tabarka with this private camping adventure. Perfect for fishing, kayaking, and enjoying tranquil sunsets by the water's edge.",
+    "activities": [
+      "Fishing",
+      "Kayaking",
+      "Sunset picnics"
+    ],
+    "gallery": [
+      "https://images.pexels.com/photos/803226/pexels-photo-803226.jpeg",
+      "https://images.pexels.com/photos/1540204/pexels-photo-1540204.jpeg",
+      "https://images.pexels.com/photos/618848/pexels-photo-618848.jpeg",
+      "https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg"
+    ]
+  }
+]
