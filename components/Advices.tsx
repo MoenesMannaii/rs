@@ -9,10 +9,11 @@ import {
   LuGlobe,
 } from 'react-icons/lu';
 import { getEcoTips } from '@/sanity/lib/getEcoTips';
+import type { PortableTextBlock } from 'sanity';
 
 interface EcoTip {
   title: string;
-  description: any;
+  description: PortableTextBlock[];
   icon: string;
   slug: { current: string };
   link?: string;
@@ -50,12 +51,11 @@ const Advices: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-6">
           {ecoTips.map((advice, index) => {
             const isHovered = hoveredIndex === index;
-            const icon = iconMap[advice.icon] || <LuLeaf className="text-green-500 text-3xl" />;
+            const icon =
+              iconMap[advice.icon] || <LuLeaf className="text-green-500 text-3xl" />;
 
             return (
-              <Link
-                href={`/eco-tip/${advice.slug.current}`}
-                key={advice.slug.current}
+             <Link href={`/eco-tip/${advice.slug.current}`} key={advice.slug.current}
                 className="w-96 h-72"
               >
                 <div
