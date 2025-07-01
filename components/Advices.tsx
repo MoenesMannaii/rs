@@ -1,18 +1,20 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import {
   LuLeaf,
   LuMountain,
   LuShoppingBag,
   LuRecycle,
   LuGlobe,
-} from "react-icons/lu";
-import { getEcoTips } from "@/sanity/lib/getEcoTips"; // adjust if path differs
+} from 'react-icons/lu';
+import { getEcoTips } from '@/sanity/lib/getEcoTips';
 
 interface EcoTip {
   title: string;
-  description: string;
+  description: any;
   icon: string;
+  slug: { current: string };
   link?: string;
 }
 
@@ -51,43 +53,24 @@ const Advices: React.FC = () => {
             const icon = iconMap[advice.icon] || <LuLeaf className="text-green-500 text-3xl" />;
 
             return (
-              <div
-                key={index}
-                className={`relative w-96 h-72 bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300
-                hover:shadow-2xl hover:border-green-500 ${
-                  isHovered ? "scale-105" : ""
-                }`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() =>
-                  setHoveredIndex((prev) => (prev === index ? null : index))
-                }
+              <Link
+                href={`/eco-tip/${advice.slug.current}`}
+                key={advice.slug.current}
+                className="w-96 h-72"
               >
-                <div className="flex justify-center items-center w-14 h-14 bg-zinc-800 rounded-full mb-3">
-                  {icon}
-                </div>
-                <h3 className="text-sm sm:text-lg font-semibold text-white">
-                  {advice.title}
-                </h3>
-
                 <div
-                  className={`mt-4 text-xs text-gray-300 text-center transition-opacity duration-300 ease-in-out ${
-                    isHovered
-                      ? "opacity-100 max-h-40"
-                      : "opacity-0 h-0 overflow-hidden"
-                  }`}
+                  className={`w-full h-full bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:shadow-2xl hover:border-green-500 ${isHovered ? 'scale-105' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <p className="mb-3">{advice.description}</p>
-                  {advice.link && (
-                    <a
-                      href={advice.link}
-                      className="text-green-400 font-semibold hover:underline"
-                    >
-                      Learn more →
-                    </a>
-                  )}
+                  <div className="flex justify-center items-center w-14 h-14 bg-zinc-800 rounded-full mb-3">
+                    {icon}
+                  </div>
+                  <h3 className="text-sm sm:text-lg font-semibold text-white hover:text-green-400 transition">
+                    {advice.title}
+                  </h3>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

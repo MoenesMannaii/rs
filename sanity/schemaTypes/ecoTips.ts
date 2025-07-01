@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { Leaf, Globe, Mountain, ShoppingBag, Recycle } from 'lucide-react'
+import { Leaf } from 'lucide-react'
 
 export default defineType({
   name: 'ecoTip',
@@ -14,11 +14,11 @@ export default defineType({
       validation: (Rule) => Rule.required().min(3).max(50),
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      rows: 3,
-      validation: (Rule) => Rule.required().max(200),
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: { source: 'title', maxLength: 96 },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'icon',
@@ -37,6 +37,29 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          marks: {
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'External Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                  { name: 'blank', type: 'boolean', title: 'Open in new tab?' },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    }),
+    defineField({
       name: 'link',
       title: 'Learn More Link',
       type: 'url',
@@ -49,9 +72,6 @@ export default defineType({
     }),
   ],
   preview: {
-    select: {
-      title: 'title',
-      subtitle: 'icon',
-    },
+    select: { title: 'title', subtitle: 'icon' },
   },
 })
