@@ -16,9 +16,9 @@ const Navbar: React.FC = () => {
   };
 
   // Toggle dropdown
-  const toggleDropdown = () => {
+ /*  const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
-  };
+  }; */
 
   // Close dropdown and menu on outside click
   useEffect(() => {

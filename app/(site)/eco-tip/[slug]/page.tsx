@@ -42,14 +42,14 @@ export default async function EcoTipPage({
             components={{
               marks: {
                 link: ({ value, children }) => (
-                  <a
+                  <Link
                     href={value?.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 underline hover:text-green-300 transition"
                   >
                     {children}
-                  </a>
+                  </Link>
                 ),
               },
             }}

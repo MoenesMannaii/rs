@@ -177,7 +177,7 @@ const PrivateAdventureDetails = () => {
           fill
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center px-4">
+        <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white text-center px-4">
           <h1 className="text-2xl md:text-4xl font-bold drop-shadow">
             {adventure.title}
           </h1>
@@ -307,7 +307,7 @@ const PrivateAdventureDetails = () => {
               >
                <option value="1" className="select-black">1 Day</option>
                   <option value="2" className="select-black">2 Days</option>
-                  <option value="3" className="select-black">3 Days</option>
+                 
               </select>
             </div>
 
