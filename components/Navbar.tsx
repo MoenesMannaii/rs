@@ -102,7 +102,16 @@ const Navbar: React.FC = () => {
                 About Us
               </Link>
             </li>
-            <li className="relative">
+              <li>
+              <Link
+                href="/#eco-tips"
+                className="text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Eco-Tips
+              </Link>
+            </li>
+           {/*  <li className="relative">
               <button
                 aria-label="Explore Menu"
                 className="flex items-center gap-x-1 text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
@@ -127,7 +136,7 @@ const Navbar: React.FC = () => {
               {isDropdownOpen && (
                 <div className="absolute left-0 lg:left-auto lg:right-0 bg-neutral-900/80 mt-4 w-48 rounded-b-md shadow-lg z-20 backdrop-blur-sm">
                   <Link
-                    href="#testimonials"
+                    href="/#testimonials"
                     className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900 hover:text-green-600 transition-colors duration-200"
                     onClick={() => {
                       toggleDropdown();
@@ -137,7 +146,7 @@ const Navbar: React.FC = () => {
                     Testimonials
                   </Link>
                   <Link
-                    href="#advices"
+                    href="/#eco-tips"
                     className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900 hover:text-green-600 transition-colors duration-200"
                     onClick={() => {
                       toggleDropdown();
@@ -148,7 +157,7 @@ const Navbar: React.FC = () => {
                   </Link>
                 </div>
               )}
-            </li>
+            </li> */}
           </ul>
           <div className="flex flex-col items-center mt-6 lg:mt-0 lg:flex-row lg:ml-6 gap-3">
             <SignedOut>

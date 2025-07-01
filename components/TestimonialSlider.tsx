@@ -34,6 +34,8 @@ const TestimonialSlider: React.FC = () => {
     fetchTestimonials();
   }, []);
 
+  
+
   useEffect(() => {
     if (!testimonials.length) return;
 
