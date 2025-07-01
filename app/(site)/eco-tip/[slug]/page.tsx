@@ -55,24 +55,8 @@ export default async function EcoTipPage({
             }}
           />
         </div>
-        {tip.link && (
-          <a
-            href={tip.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded transition"
-          >
-            Learn More →
-          </a>
-        )}
-        <div className="mt-16">
-          <Link
-            href="/"
-            className="text-sm text-gray-400 hover:text-green-400 transition underline"
-          >
-            ← Back to all tips
-          </Link>
-        </div>
+       
+      
       </article>
     </main>
   );
