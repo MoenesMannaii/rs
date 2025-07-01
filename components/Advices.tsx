@@ -53,7 +53,7 @@ const Advices: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`relative w-64 h-72 bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300
+                className={`relative w-96 h-72 bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300
                 hover:shadow-2xl hover:border-green-500 ${
                   isHovered ? "scale-105" : ""
                 }`}
@@ -66,7 +66,7 @@ const Advices: React.FC = () => {
                 <div className="flex justify-center items-center w-14 h-14 bg-zinc-800 rounded-full mb-3">
                   {icon}
                 </div>
-                <h3 className="text-sm font-semibold text-white">
+                <h3 className="text-sm sm:text-lg font-semibold text-white">
                   {advice.title}
                 </h3>
 

@@ -64,7 +64,7 @@ const PrivateCampingSection: React.FC = () => {
 
   return (
     <section className="py-24 bg-zinc-950 text-white">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl text-center uppercase font-bold">Private Camping<br />Adventures</h2>
         <div className="mt-3 h-1 w-48 bg-green-500 mx-auto rounded"></div>
 

@@ -50,13 +50,13 @@ function Footer() {
         </p>
 
         <div className="flex -mx-2 space-x-4">
-          <a href="#" className="text-gray-600 hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
+          <a href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
             <FaInstagram className="w-6 h-6" />
           </a>
-          <a href="#" className="text-gray-600 hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
+          <a href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
             <FaFacebook className="w-6 h-6" />
           </a>
-          <a href="#" className="text-gray-600 hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
+          <a href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
             <FaWhatsapp className="w-6 h-6" />
           </a>
         </div>
