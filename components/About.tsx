@@ -17,11 +17,13 @@ function About() {
           <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed">
             At <span className="text-green-400 font-semibold">Runaway Society</span>, we are a vibrant camping community dedicated to exploring and celebrating the breathtaking landscapes, rich culture, and unique biodiversity of Tunisia. Through responsible and immersive camping experiences, we bring travelers closer to nature, fostering a deep connection with Tunisia’s stunning outdoors.
           </p>
+          <div className='mb-8'>
           <Link href="/about">
             <button className="px-6 py-3 rounded-md bg-green-500 text-black hover:bg-green-400 transition duration-200 font-medium shadow-lg">
               The Story
             </button>
           </Link>
+          </div>
         </div>
 
         {/* Right Content */}

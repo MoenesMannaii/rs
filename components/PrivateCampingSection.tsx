@@ -19,23 +19,42 @@ interface CampingAdventure {
 const PrivateCampingSection: React.FC = () => {
   const [adventures, setAdventures] = useState<CampingAdventure[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [cardsPerSlide, setCardsPerSlide] = useState(3);
 
   useEffect(() => {
-    const q = `*[_type == "privateadventure"] | order(title asc) {
-      _id,
-      slug,
-      title,
-      image,
-      duration,
-      description,
-      gallery
-    }`;
-    client.fetch(q).then(setAdventures);
+    const fetchData = async () => {
+      const q = `*[_type == "privateadventure"] | order(title asc) {
+        _id,
+        slug,
+        title,
+        image,
+        duration,
+        description,
+        gallery
+      }`;
+      const data = await client.fetch(q);
+      setAdventures(data);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const updateCardsPerSlide = () => {
+      const width = window.innerWidth;
+      if (width < 640) setCardsPerSlide(1);       // Mobile
+      else if (width < 1024) setCardsPerSlide(2); // Tablet
+      else setCardsPerSlide(3);                   // Desktop
+    };
+
+    updateCardsPerSlide();
+    window.addEventListener('resize', updateCardsPerSlide);
+    return () => window.removeEventListener('resize', updateCardsPerSlide);
   }, []);
 
   const slides: CampingAdventure[][] = [];
-  for (let i = 0; i < adventures.length; i += 3) {
-    slides.push(adventures.slice(i, i + 3));
+  for (let i = 0; i < adventures.length; i += cardsPerSlide) {
+    slides.push(adventures.slice(i, i + cardsPerSlide));
   }
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -57,7 +76,11 @@ const PrivateCampingSection: React.FC = () => {
             >
               {slides.map((slide, slideIndex) => (
                 <div key={slideIndex} className="min-w-full flex justify-center">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-4">
+                  <div
+                    className={`grid grid-cols-1 ${
+                      cardsPerSlide === 2 ? 'md:grid-cols-2' : cardsPerSlide === 3 ? 'md:grid-cols-3' : ''
+                    } gap-8 w-full max-w-6xl px-4`}
+                  >
                     {slide.map((adventure) => (
                       <div key={adventure._id} className="relative rounded border border-zinc-800 bg-zinc-900 overflow-hidden">
                         <Image
