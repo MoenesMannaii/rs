@@ -196,11 +196,11 @@ const AdventuresDetails: React.FC = () => {
           priority
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-bold drop-shadow">
+          <h1 className="text-2xl md:text-4xl font-bold drop-shadow">
             {adventure.title}
           </h1>
-          <p className="text-xl mt-2">
-            Tariff: <span className="text-yellow-400">{adventure.tariff} TND</span>
+          <p className="text-base mt-2">
+            Tariff: <span className="text-green-400 font-bold">{adventure.tariff} TND</span>
           </p>
         </div>
       </div>
@@ -209,23 +209,21 @@ const AdventuresDetails: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Main Tabs */}
         <div className="lg:col-span-2 space-y-8">
-          <div className="bg-zinc-950 rounded-xl shadow p-6">
-            {/* Tabs */}
+            <div className="bg-zinc-950 rounded-xl shadow p-6">
             <div className="flex border-b space-x-6">
-             {(["description", "activities", "program", "gears"] as const).map((tab) => (
-  <button
-    key={tab}
-    onClick={() => setActiveTab(tab)}
-    className={`pb-2 font-medium border-b-2 ${
-      activeTab === tab
-        ? "border-green-600 text-green-600"
-        : "border-transparent hover:text-green-600"
-    } transition-all`}
-  >
-    {tab.charAt(0).toUpperCase() + tab.slice(1)}
-  </button>
-))}
-
+              {["description", "activities", "program", "gears"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab as typeof activeTab)}
+                  className={`pb-2 text-white text-xs sm:text-base font-medium border-b-2 ${
+                    activeTab === tab
+                      ? "border-green-600 text-green-600"
+                      : "border-transparent hover:text-green-600"
+                  } transition-all`}
+                >
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
             </div>
 
             <div className="mt-8 prose prose-lg max-w-none rounded-lg">

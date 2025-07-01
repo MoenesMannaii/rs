@@ -178,7 +178,7 @@ const PrivateAdventureDetails = () => {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-bold drop-shadow">
+          <h1 className="text-2xl md:text-4xl font-bold drop-shadow">
             {adventure.title}
           </h1>
         </div>
@@ -195,7 +195,7 @@ const PrivateAdventureDetails = () => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab as typeof activeTab)}
-                  className={`pb-2 text-xs sm:text-base font-medium border-b-2 ${
+                  className={`pb-2 text-white text-xs sm:text-base font-medium border-b-2 ${
                     activeTab === tab
                       ? "border-green-600 text-green-600"
                       : "border-transparent hover:text-green-600"
