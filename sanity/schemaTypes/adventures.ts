@@ -1,5 +1,5 @@
 export default {
-  name: 'adventures',
+  name: 'adventure',
   title: 'Adventure',
   type: 'document',
   fields: [

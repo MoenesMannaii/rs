@@ -4,7 +4,8 @@ export const structure = (S: any) =>
     .items([
       S.listItem()
         .title('Adventures')
-        .child(S.documentTypeList('adventures').title('Adventures')),
+        .child(S.documentTypeList('adventure').title('Adventures')),
+
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem: any) => listItem.getId() !== 'adventures'
