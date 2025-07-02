@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed z-20 w-full px-4 sm:px-8 mx-auto max-w-screen-md lg:my-2 lg:rounded-full bg-neutral-900/80 backdrop-blur-md navbar">
+    <div className="fixed z-20 w-full px-4 sm:px-8 mx-auto max-w-4xl lg:my-2 lg:rounded-full bg-neutral-900/80 backdrop-blur-md navbar">
       <nav className="flex flex-wrap items-center justify-between py-4">
         {/* Logo */}
         <div className="flex items-center justify-between w-full lg:w-auto">
@@ -52,8 +52,8 @@ const Navbar: React.FC = () => {
   <Image 
     src="https://res.cloudinary.com/dnntpvrmp/image/upload/v1751461246/68f14a9c60e00bdd16697cfccdb01ef0_1_fgv8zc.png" 
     alt="Runaway Society Logo" 
-    width={50}  // or any desired width
-    height={50} // or any desired height
+    width={60}  // or any desired width
+    height={60} // or any desired height
     priority     // optional: preloads image for faster load
   />
    
@@ -168,12 +168,12 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col items-center mt-6 lg:mt-0 lg:flex-row lg:ml-6 gap-3">
             <SignedOut>
               <SignInButton>
-                <button className="px-5 py-1.5 text-white dark:text-white border border-white/80 dark:border-white/80 rounded-md font-medium hover:border-green-300 hover:text-green-300 transition-all duration-200">
+                <button className="px-4 py-1.5 text-white dark:text-white border border-white/80 dark:border-white/80 rounded-md font-medium hover:border-green-300 hover:text-green-300 transition-all duration-200">
                   Login
                 </button>
               </SignInButton>
               <SignUpButton>
-                <button className="px-5 py-1.5 text-white dark:text-white bg-green-700 rounded-md font-medium hover:bg-green-800 transition-all duration-200">
+                <button className="px-4 py-1.5 text-white dark:text-white bg-green-700 rounded-md font-medium hover:bg-green-800 transition-all duration-200">
                   Register
                 </button>
               </SignUpButton>
