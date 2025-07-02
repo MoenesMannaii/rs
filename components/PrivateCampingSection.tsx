@@ -65,7 +65,7 @@ const PrivateCampingSection: React.FC = () => {
   return (
     <section className="py-24 bg-zinc-950 text-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl text-center uppercase font-bold">Private Camping<br />Adventures</h2>
+        <h2 className="text-4xl md:text-5xl text-center uppercase font-bold">private outings</h2>
         <div className="mt-3 h-1 w-48 bg-green-500 mx-auto rounded"></div>
 
         <div className="relative mt-12">
@@ -92,7 +92,7 @@ const PrivateCampingSection: React.FC = () => {
                         />
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-5">
                           <h3 className="text-lg font-bold text-white mb-2">{adventure.title}</h3>
-                          <p className="text-sm text-green-400 font-medium mb-4">{adventure.duration} Days</p>
+                          <p className="text-sm text-green-400 font-medium mb-4">{adventure.duration} Day</p>
                           <Link
                             href={`/adventure/${adventure.slug.current}`}
                             className="inline-block bg-green-600 hover:bg-green-500 text-sm text-white font-medium py-2 px-2.5 rounded transition"

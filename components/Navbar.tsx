@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton, useUser } from '@clerk/nextjs';
 
 const Navbar: React.FC = () => {
@@ -43,15 +44,20 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed z-20 w-full px-4 sm:px-8 mx-auto max-w-screen-lg lg:my-2 lg:rounded-full bg-neutral-900/80 backdrop-blur-md navbar">
+    <div className="fixed z-20 w-full px-4 sm:px-8 mx-auto max-w-screen-md lg:my-2 lg:rounded-full bg-neutral-900/80 backdrop-blur-md navbar">
       <nav className="flex flex-wrap items-center justify-between py-4">
         {/* Logo */}
         <div className="flex items-center justify-between w-full lg:w-auto">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-semibold text-white dark:text-white">
-              Runaway Society
-            </span>
-          </Link>
+        <Link href="/" className="flex items-center space-x-2">
+  <Image 
+    src="https://res.cloudinary.com/dnntpvrmp/image/upload/v1751461246/68f14a9c60e00bdd16697cfccdb01ef0_1_fgv8zc.png" 
+    alt="Runaway Society Logo" 
+    width={60}  // or any desired width
+    height={60} // or any desired height
+    priority     // optional: preloads image for faster load
+  />
+   
+</Link>
           {/* Mobile Menu Button */}
           <button
             aria-label="Toggle Menu"
@@ -77,11 +83,11 @@ const Navbar: React.FC = () => {
           <ul className="flex flex-col items-center justify-end flex-1 pt-6 lg:pt-0 lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6">
             <li>
               <Link
-                href="#adventure"
+                href="/#adventures"
                 className="text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Adventure
+                Adventures
               </Link>
             </li>
             <li>

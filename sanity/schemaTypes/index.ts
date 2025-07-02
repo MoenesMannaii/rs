@@ -8,7 +8,8 @@ import blogComment from './blogComment'
 import blog from './blog'
 import testimonial from './testimonial'
 import ecoTips from './ecoTips'
+import hero from './hero'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, adventures,testimonial, privateadventure,ecoTips, booking,blog, blogComment],
+  types: [blockContentType, hero, adventures,testimonial, privateadventure,ecoTips, booking,blog, blogComment],
 }
