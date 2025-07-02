@@ -52,8 +52,8 @@ const Navbar: React.FC = () => {
   <Image 
     src="https://res.cloudinary.com/dnntpvrmp/image/upload/v1751461246/68f14a9c60e00bdd16697cfccdb01ef0_1_fgv8zc.png" 
     alt="Runaway Society Logo" 
-    width={60}  // or any desired width
-    height={60} // or any desired height
+    width={50}  // or any desired width
+    height={50} // or any desired height
     priority     // optional: preloads image for faster load
   />
    
