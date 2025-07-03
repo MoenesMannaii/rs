@@ -1,5 +1,5 @@
 import BlogDetailClient from '@/components/BlogDetailClient';
-import { client } from '@/sanity/lib/client';
+import { liveSanityFetch } from '@/sanity/lib/live';
 import { Blog } from '@/sanity/types/blog'; // adjust the path as needed
 
 export default async function BlogDetailPage(props: { params: Promise<{ slug: string }> }) {
@@ -35,7 +35,8 @@ export default async function BlogDetailPage(props: { params: Promise<{ slug: st
     }
   }`;
 
-  const blog: Blog | null = await client.fetch(query, { slug });
+  const result = await liveSanityFetch({ query, params: { slug } });
+  const blog: Blog | null = result?.data ?? null;
 
   return <BlogDetailClient blog={blog} />;
 }

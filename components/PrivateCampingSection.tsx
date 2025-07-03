@@ -3,8 +3,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { client, urlFor } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/client';
 import type { Image as SanityImage } from 'sanity';
+import { liveSanityFetch } from '@/sanity/lib/live';
 
 interface CampingAdventure {
   _id: string;
@@ -23,22 +24,22 @@ const PrivateCampingSection: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const query = `*[_type == "privateadventure"] | order(title asc) {
-        _id,
-        slug,
-        title,
-        image,
-        duration,
-        description,
-        gallery
-      }`;
-      const data = await client.fetch(query);
-      setAdventures(data);
-    };
-    fetchData();
-  }, []);
+useEffect(() => {
+  const fetchData = async () => {
+    const query = `*[_type == "privateadventure"] | order(title asc) {
+      _id,
+      slug,
+      title,
+      image,
+      duration,
+      description,
+      gallery
+    }`;
+    const { data } = await liveSanityFetch({ query }); // <-- liveSanityFetch expects an object
+    setAdventures(data);
+  };
+  fetchData();
+}, []);
 
   useEffect(() => {
     const updateCardsPerSlide = () => {

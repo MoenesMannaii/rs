@@ -7,6 +7,7 @@ import Link from "next/link";
 import { client, urlFor } from "@/sanity/lib/client";
 import { useUser } from "@clerk/nextjs";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { liveSanityFetch } from "@/sanity/lib/live";
 
 interface Activity {
   _key: string;
@@ -60,32 +61,31 @@ const PrivateAdventureDetails = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const { user } = useUser();
 
-  useEffect(() => {
-    if (!slug) {
-      setError("Invalid slug");
-      setLoading(false);
-      return;
-    }
+useEffect(() => {
+  if (!slug) {
+    setError("Invalid slug");
+    setLoading(false);
+    return;
+  }
 
-    const q = `*[_type=='privateadventure' && slug.current == $slug][0]{
-      title, slug, image, duration, description, activities, program, gears, gallery
-    }`;
+  const q = `*[_type=='privateadventure' && slug.current == $slug][0]{
+    title, slug, image, duration, description, activities, program, gears, gallery
+  }`;
 
-    client
-      .fetch(q, { slug })
-      .then((data) => {
-        if (!data) setError("Adventure not found");
-        else setAdventure(data);
-      })
-      .catch((err: unknown) => {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("An unknown error occurred.");
-        }
-      })
-      .finally(() => setLoading(false));
-  }, [slug]);
+  liveSanityFetch({ query: q, params: { slug } })  // <-- use liveSanityFetch here
+    .then(({ data }) => {
+      if (!data) setError("Adventure not found");
+      else setAdventure(data);
+    })
+    .catch((err: unknown) => {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred.");
+      }
+    })
+    .finally(() => setLoading(false));
+}, [slug]);
 
   const handleBooking = async () => {
     if (!selectedDate) {

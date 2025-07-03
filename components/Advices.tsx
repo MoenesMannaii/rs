@@ -8,7 +8,7 @@ import {
   LuRecycle,
   LuGlobe,
 } from 'react-icons/lu';
-import { getEcoTips } from '@/sanity/lib/getEcoTips';
+import { liveSanityFetch } from '@/sanity/lib/live';
 import type { PortableTextBlock } from 'sanity';
 
 interface EcoTip {
@@ -27,16 +27,33 @@ const iconMap: Record<string, React.ReactNode> = {
   recycle: <LuRecycle className="text-green-500 text-3xl" />,
 };
 
+const query = `*[_type == "ecoTip"]{
+  title,
+  description,
+  icon,
+  slug,
+  link
+}`;
+
 const Advices: React.FC = () => {
   const [ecoTips, setEcoTips] = useState<EcoTip[]>([]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    getEcoTips().then(setEcoTips);
+    let isMounted = true;
+    liveSanityFetch({ query })
+      .then(({ data }) => {
+        if (isMounted) setEcoTips(data);
+      })
+      .catch((err) => console.error('LiveSanity fetch error:', err));
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
-    <section id='eco-tips' className="py-20 bg-black px-4 sm:px-6 lg:px-8">
+    <section id="eco-tips" className="py-20 bg-black px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl uppercase font-bold text-white">
@@ -52,14 +69,20 @@ const Advices: React.FC = () => {
           {ecoTips.map((advice, index) => {
             const isHovered = hoveredIndex === index;
             const icon =
-              iconMap[advice.icon] || <LuLeaf className="text-green-500 text-3xl" />;
+              iconMap[advice.icon] || (
+                <LuLeaf className="text-green-500 text-3xl" />
+              );
 
             return (
-             <Link href={`/eco-tip/${advice.slug.current}`} key={advice.slug.current}
+              <Link
+                href={`/eco-tip/${advice.slug.current}`}
+                key={advice.slug.current}
                 className="w-96 h-72"
               >
                 <div
-                  className={`w-full h-full bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:shadow-2xl hover:border-green-500 ${isHovered ? 'scale-105' : ''}`}
+                  className={`w-full h-full bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:shadow-2xl hover:border-green-500 ${
+                    isHovered ? 'scale-105' : ''
+                  }`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >

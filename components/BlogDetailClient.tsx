@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';  // <-- Added
+import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 
 interface SanityImage {
@@ -53,11 +53,11 @@ interface BlogDetailClientProps {
   blog: Blog | null;
 }
 
-// TODO: Replace these with your actual Sanity project ID and dataset
+// Get project ID and dataset from env variables for video URL
 const SANITY_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const SANITY_DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET;
 
-const getVideoUrl = (videoFile: VideoFile) => {
+const getVideoUrl = (videoFile: VideoFile | undefined | null) => {
   if (!videoFile?.asset?._ref) return null;
   const ref = videoFile.asset._ref; // e.g. "file-abc123xyz456-mp4"
   const parts = ref.split('-');
@@ -66,7 +66,6 @@ const getVideoUrl = (videoFile: VideoFile) => {
   const fileId = parts.slice(1, parts.length - 1).join('-'); // supports hyphen in id
   const extension = parts[parts.length - 1];
 
-  // Example: https://cdn.sanity.io/files/yourProjectId/production/abc123xyz456.mp4
   return `https://cdn.sanity.io/files/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${fileId}.${extension}`;
 };
 
@@ -239,7 +238,10 @@ const BlogDetailClient: React.FC<BlogDetailClientProps> = ({ blog }) => {
           </div>
           <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
             {blog.whatToDo_gallery?.slice(0, 4).map((img, idx) => (
-              <div key={idx} className="relative w-full h-full rounded overflow-hidden">
+              <div
+                key={idx}
+                className="relative w-full h-full rounded overflow-hidden"
+              >
                 <Image
                   src={img.asset.url}
                   alt={`WhatToDo ${idx + 1}`}
@@ -255,7 +257,10 @@ const BlogDetailClient: React.FC<BlogDetailClientProps> = ({ blog }) => {
         <section className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
             {blog.whyvisit_gallery?.slice(0, 4).map((img, idx) => (
-              <div key={idx} className="relative w-full h-full rounded overflow-hidden">
+              <div
+                key={idx}
+                className="relative w-full h-full rounded overflow-hidden"
+              >
                 <Image
                   src={img.asset.url}
                   alt={`WhyVisit ${idx + 1}`}
@@ -269,30 +274,65 @@ const BlogDetailClient: React.FC<BlogDetailClientProps> = ({ blog }) => {
             <h2 className="text-3xl font-bold uppercase mb-4 text-green-500">
               {blog.whyvisit_title}
             </h2>
-            <p className="text-gray-300 text-justify">{blog.whyvisit}</p>
+            <p className="text-white/70 text-justify">{blog.whyvisit}</p>
           </div>
         </section>
 
-        {/* Source */}
-        <section className="text-center text-sm">
-          <p>
-            Source:{' '}
-            <span className="italic underline text-green-400">
-              {blog.sources}
-            </span>
-          </p>
+        {/* Sources */}
+        <section>
+          <h2 className="text-2xl font-semibold text-green-500 mb-2">
+            Sources
+          </h2>
+          <p className="text-sm text-gray-400">{blog.sources}</p>
         </section>
 
-        {/* Back Button */}
-        <div className="text-center">
-          <Link
-            href="/"
-            className="inline-block mt-12 bg-green-600 hover:bg-green-700 text-white py-3 px-8 rounded-lg font-semibold transition"
-          >
-            Back to Places
-          </Link>
-        </div>
+        {/* Comments Section */}
+        {blog.comments?.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-semibold text-green-500 mb-4">
+              Comments
+            </h2>
+            <div className="space-y-4">
+              {blog.comments.map((comment, idx) => (
+                <div
+                  key={idx}
+                  className="border border-gray-700 p-4 rounded-lg bg-zinc-900"
+                >
+                  <p className="text-gray-300 italic">{comment.comment}</p>
+                  <p className="mt-2 text-sm text-gray-400">
+                    — {comment.name},{' '}
+                    {new Date(comment.date).toLocaleDateString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Activities (if needed) */}
+        {blog.activities?.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-semibold text-green-500 mb-4">
+              Activities
+            </h2>
+            <ul className="list-disc list-inside text-white/70">
+              {blog.activities.map((activity, idx) => (
+                <li key={idx}>{activity}</li>
+              ))}
+            </ul>
+          </section>
+        )}
       </main>
+
+      {/* Back to blogs link */}
+      <div className="max-w-7xl mx-auto px-6 pb-10">
+        <Link
+          href="/places"
+          className="text-green-400 hover:text-green-600 font-semibold"
+        >
+          ← Back to all eco-adventures
+        </Link>
+      </div>
     </div>
   );
 };

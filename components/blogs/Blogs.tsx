@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { client } from '@/sanity/lib/client';
+import { liveSanityFetch } from '@/sanity/lib/live';  // Use liveSanityFetch
 
 interface Blog {
   _id: string;
@@ -30,8 +30,8 @@ const Blogs: React.FC = () => {
       } | order(_createdAt desc)`;
 
       try {
-        const data: Blog[] = await client.fetch(query);
-        setBlogs(data);
+        const result = await liveSanityFetch({ query });
+        setBlogs(result.data as Blog[]);
       } catch (error) {
         console.error('Failed to fetch blogs from Sanity:', error);
       } finally {
@@ -105,7 +105,7 @@ const Blogs: React.FC = () => {
                   </p>
 
                   <Link
-                   href={`/places/${blog.slug.current}`} 
+                    href={`/places/${blog.slug.current}`}
                     className="mt-4 inline-flex items-center justify-end text-green-400 hover:text-white font-medium py-2 px-4 rounded-lg transition"
                   >
                     Explore Now

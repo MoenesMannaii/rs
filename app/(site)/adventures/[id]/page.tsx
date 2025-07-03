@@ -331,7 +331,7 @@ const AdventuresDetails: React.FC = () => {
             value={selectedDuration}
             onChange={(e) => setSelectedDuration(e.target.value)}
           >
-            {[...Array(10)].map((_, i) => (
+            {[...Array(2)].map((_, i) => (
               <option key={i + 1} value={`${i + 1}`}>
                 {i + 1}
               </option>
