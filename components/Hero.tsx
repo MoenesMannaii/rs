@@ -27,7 +27,7 @@ const HeroWithNavbar: React.FC = () => {
 
   useEffect(() => {
     const fetchHeroData = async () => {
-      const query = `*[_type == "heroSection"][0]{ 
+      const query = `*[_type == "hero"][0]{ 
         _id, 
         _type, 
         _rev, 
