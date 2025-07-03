@@ -3,6 +3,7 @@ import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from '@clerk/nextjs';
+import { SanityLive } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Runaway Society",
@@ -24,6 +25,7 @@ export default function RootLayout({
           </div>
           {children}
           <Footer />
+          <SanityLive />
         </body>
       </html>
     </ClerkProvider>

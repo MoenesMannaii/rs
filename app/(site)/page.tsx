@@ -30,12 +30,7 @@ const heroData = await client.fetch(
   return (
   <div>
     {/* <Navbar /> */}
-    <Hero 
-    backgroundImage={heroData.backgroundImage}
-        heading={heroData.heading || 'Default Heading'}
-        subheading={heroData.subheading || 'Default Subheading'}
-        buttonText={heroData.buttonText || 'Explore Now'}
-        buttonLink={heroData.buttonLink || '/#adventure'} />
+    <Hero />
     <About />
     <AdventureSection />
     <TestimonialSlider />
