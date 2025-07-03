@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Footer() {
   return (
@@ -8,9 +9,15 @@ function Footer() {
       <div className="text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
+            <div className='space-y-4'>
               <Link href="/" className="flex items-center space-x-2">
-                <span className="text-xl font-semibold text-white">Runaway Society</span>
+                <Image
+                             src="https://res.cloudinary.com/dnntpvrmp/image/upload/v1751461246/68f14a9c60e00bdd16697cfccdb01ef0_1_fgv8zc.png"
+                             alt="Runaway Society Logo"
+                             width={60} // or any desired width
+                             height={60} // or any desired height
+                             priority // optional: preloads image for faster load
+                           />
               </Link>
               <p className="text-gray-400 text-sm">
                 Your one-stop path for hiking, climbing, and camping gear.
@@ -35,9 +42,9 @@ function Footer() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
               <p className="text-gray-400 text-sm">
-                Email: support@northscape.com
+                Email: support@runawaysociety.com
                 <br />
-                Phone: +216 28 888 XXX
+                Phone: +216 94021925
               </p>
             </div>
           </div>
@@ -50,15 +57,15 @@ function Footer() {
         </p>
 
         <div className="flex -mx-2 space-x-4">
-          <a href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
+          <Link href="https://www.instagram.com/runnaway.society?igsh=MXNsZWxxc2Rrb2Vmcg==" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
             <FaInstagram className="w-6 h-6" />
-          </a>
-          <a href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
+          </Link>
+          <Link href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
             <FaFacebook className="w-6 h-6" />
-          </a>
-          <a href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
+          </Link>
+          <Link href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
             <FaWhatsapp className="w-6 h-6" />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
