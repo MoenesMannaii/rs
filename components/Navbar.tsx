@@ -1,14 +1,25 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton, useUser } from '@clerk/nextjs';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+  SignUpButton,
+  useUser,
+} from "@clerk/nextjs";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user } = useUser();
-  const userName = user?.fullName || user?.username || user?.primaryEmailAddress?.emailAddress || "User";
+  const userName =
+    user?.fullName ||
+    user?.username ||
+    user?.primaryEmailAddress?.emailAddress ||
+    "User";
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -17,7 +28,7 @@ const Navbar: React.FC = () => {
   };
 
   // Toggle dropdown
- /*  const toggleDropdown = () => {
+  /*  const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   }; */
 
@@ -25,19 +36,19 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (!target.closest('.navbar') && (isMenuOpen || isDropdownOpen)) {
+      if (!target.closest(".navbar") && (isMenuOpen || isDropdownOpen)) {
         setIsMenuOpen(false);
         setIsDropdownOpen(false);
       }
     };
 
-    document.addEventListener('click', handleOutsideClick);
-    return () => document.removeEventListener('click', handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
   }, [isMenuOpen, isDropdownOpen]);
 
   // Handle keyboard navigation for accessibility
   const handleKeyDown = (event: React.KeyboardEvent, action: () => void) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       action();
     }
@@ -48,16 +59,15 @@ const Navbar: React.FC = () => {
       <nav className="flex flex-wrap items-center justify-between py-4">
         {/* Logo */}
         <div className="flex items-center justify-between w-full lg:w-auto">
-        <Link href="/" className="flex items-center space-x-2">
-  <Image 
-    src="https://res.cloudinary.com/dnntpvrmp/image/upload/v1751461246/68f14a9c60e00bdd16697cfccdb01ef0_1_fgv8zc.png" 
-    alt="Runaway Society Logo" 
-    width={60}  // or any desired width
-    height={60} // or any desired height
-    priority     // optional: preloads image for faster load
-  />
-   
-</Link>
+          <Link href="/" className="flex items-center space-x-2">
+            <Image
+              src="https://res.cloudinary.com/dnntpvrmp/image/upload/v1751461246/68f14a9c60e00bdd16697cfccdb01ef0_1_fgv8zc.png"
+              alt="Runaway Society Logo"
+              width={60} // or any desired width
+              height={60} // or any desired height
+              priority // optional: preloads image for faster load
+            />
+          </Link>
           {/* Mobile Menu Button */}
           <button
             aria-label="Toggle Menu"
@@ -77,10 +87,20 @@ const Navbar: React.FC = () => {
         {/* Desktop & Mobile Menu */}
         <div
           className={`${
-            isMenuOpen ? 'block' : 'hidden'
+            isMenuOpen ? "block" : "hidden"
           } w-full lg:flex lg:items-center lg:w-auto mt-4 lg:mt-0 transition-all duration-300 ease-in-out`}
         >
           <ul className="flex flex-col items-center justify-end flex-1 pt-6 lg:pt-0 lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6">
+            <li>
+              <Link
+                href="/about"
+                className="text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About Us
+              </Link>
+            </li>
+
             <li>
               <Link
                 href="/#adventures"
@@ -88,6 +108,16 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Adventures
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/#eco-tips"
+                className="text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Eco-Tips
               </Link>
             </li>
             <li>
@@ -99,25 +129,7 @@ const Navbar: React.FC = () => {
                 Blogs
               </Link>
             </li>
-            <li>
-              <Link
-                href="/about"
-                className="text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About Us
-              </Link>
-            </li>
-              <li>
-              <Link
-                href="/#eco-tips"
-                className="text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Eco-Tips
-              </Link>
-            </li>
-           {/*  <li className="relative">
+            {/*  <li className="relative">
               <button
                 aria-label="Explore Menu"
                 className="flex items-center gap-x-1 text-white dark:text-white hover:text-green-300 focus:text-green-300 transition-colors duration-200 focus-visible:ring-2 ring-green-300 focus:outline-none px-4 py-2 rounded-md"
@@ -179,21 +191,26 @@ const Navbar: React.FC = () => {
               </SignUpButton>
             </SignedOut>
             <SignedIn>
-              <UserButton 
+              <UserButton
                 appearance={{
                   elements: {
-                    userButtonAvatarBox: 'w-10 h-10',
-                    userButtonPopoverCard: 'bg-neutral-900/80 backdrop-blur-md text-white',
-                  }
+                    userButtonAvatarBox: "w-10 h-10",
+                    userButtonPopoverCard:
+                      "bg-neutral-900/80 backdrop-blur-md text-white",
+                  },
                 }}
-                
               />
-               <div className="text-sm text-title">
-                      <p className="text-[9px] text-gray-400 font-light">Welcome Back,</p>
-                      <p className="font-medium truncate max-w-[120px]" title={userName}>
-                        {userName}
-                      </p>
-                    </div>
+              <div className="text-sm text-title">
+                <p className="text-[9px] text-gray-400 font-light">
+                  Welcome Back,
+                </p>
+                <p
+                  className="font-medium truncate max-w-[120px]"
+                  title={userName}
+                >
+                  {userName}
+                </p>
+              </div>
             </SignedIn>
           </div>
         </div>

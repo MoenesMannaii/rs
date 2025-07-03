@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { client, urlFor } from '@/sanity/lib/client';
 
-
 interface Activity {
   name: string;
 }
@@ -20,6 +19,7 @@ interface AdventureCard {
   title: string;
   image: SanityImage;
   tariff: string;
+  duration: string;
   activities: Activity[];
   type?: string;
 }
@@ -31,6 +31,7 @@ async function getAdventures() {
     type,
     image,
     tariff,
+    duration,
     activities
   }`;
   const adventures: AdventureCard[] = await client.fetch(query);
@@ -47,21 +48,35 @@ const AdventureSection: React.FC = async () => {
   const renderCard = (card: AdventureCard) => (
     <Link href={`/adventures/${card.slug.current}`} key={card.slug.current}>
       <div
-        className="relative rounded overflow-hidden h-80 bg-zinc-900 border border-zinc-800 hover:shadow-lg transition-shadow duration-300
-        hover:shadow-green-400/10"
+        className="relative rounded-lg overflow-hidden h-80 bg-zinc-900 border border-zinc-800 hover:shadow-lg transition-shadow duration-300 hover:shadow-green-400/10 cursor-pointer"
         style={{
           backgroundImage: `url(${urlFor(card.image)})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-black/60 p-5 flex flex-col justify-end">
-          <h3 className="text-lg font-bold uppercase text-white mb-2">{card.title}</h3>
-          <p className="text-md font-semibold text-green-400 mb-3">{card.tariff} TND</p>
-          <ul className="space-y-1 text-sm text-gray-300">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 flex flex-col justify-end rounded-lg shadow-lg">
+          <h3 className="text-xl font-extrabold uppercase text-white mb-3 tracking-wide drop-shadow-md">
+            {card.title}
+          </h3>
+
+          <div className="flex items-center gap-3 mb-4 text-sm font-semibold text-gray-200">
+            <p className="bg-zinc-900 bg-opacity-80 px-3 py-1 rounded shadow-sm">
+              {card.tariff} TND
+            </p>
+
+            {/* Separator */}
+            <span className="text-green-400 font-semibold">|</span>
+
+            <p className="bg-zinc-900 bg-opacity-80 px-2 py-1 rounded shadow-sm">
+              {card.duration} Day{Number(card.duration) > 1 ? 's' : ''}
+            </p>
+          </div>
+
+          <ul className="space-y-2 text-sm text-gray-300">
             {card.activities.slice(0, 3).map((activity, index) => (
-              <li key={index} className="flex items-start">
-                <span className="mr-2 text-green-500">•</span>
+              <li key={index} className="flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
                 <span className="font-medium capitalize">{activity.name}</span>
               </li>
             ))}

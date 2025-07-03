@@ -47,6 +47,13 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'duration',
+      title: 'Duration',
+      type: 'string',
+      description: 'e.g. "2 Days"',
+      validation: (Rule : any) => Rule.required(),
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'text',
