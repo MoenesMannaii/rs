@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
-import { sanityFetch } from '@/sanity/lib/live'; // Make sure path is correct
+import { liveSanityFetch } from '@/sanity/lib/live'; // ✅ use liveSanityFetch here
 
 interface HeroData {
   _id: string;
@@ -26,26 +26,25 @@ const HeroWithNavbar: React.FC = () => {
   const [heroData, setHeroData] = useState<HeroData | null>(null);
 
   useEffect(() => {
-  const fetchHeroData = async () => {
-    const query = `*[_type == "heroSection"][0]{ 
-      _id, 
-      _type, 
-      _rev, 
-      _updatedAt,
-      heading, 
-      subheading, 
-      buttonText, 
-      buttonLink, 
-      backgroundImage 
-    }`;
+    const fetchHeroData = async () => {
+      const query = `*[_type == "heroSection"][0]{ 
+        _id, 
+        _type, 
+        _rev, 
+        _updatedAt,
+        heading, 
+        subheading, 
+        buttonText, 
+        buttonLink, 
+        backgroundImage 
+      }`;
 
-    const { data } = await sanityFetch({ query });
-    setHeroData(data);
-  };
+      const { data } = await liveSanityFetch({ query }); // ✅ Destructure `data`
+      setHeroData(data);
+    };
 
-  fetchHeroData();
-}, []);
-
+    fetchHeroData();
+  }, []);
 
   if (!heroData) return null;
 
@@ -73,7 +72,7 @@ const HeroWithNavbar: React.FC = () => {
         priority
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-green-900/50 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-green-900/50 to-black" />
 
       <div className="relative z-10 flex-1 flex items-center justify-center text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
         <div>
