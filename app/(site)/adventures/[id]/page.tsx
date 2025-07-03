@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { client, urlFor } from "@/sanity/lib/client";
+import { liveSanityFetch } from "@/sanity/lib/live";
 import { useUser } from "@clerk/nextjs";
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
@@ -84,11 +85,11 @@ const AdventuresDetails: React.FC = () => {
       }`;
 
       try {
-        const data = await client.fetch(query, { slug });
-        if (!data) {
+        const data = await liveSanityFetch({ query, params: { slug } });
+        if (!data || !data.data) {
           setError(`No adventure found for slug: ${slug}`);
         } else {
-          setAdventure(data);
+          setAdventure(data.data);
         }
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -229,20 +230,18 @@ const AdventuresDetails: React.FC = () => {
             <div className="mt-8 prose prose-lg max-w-none rounded-lg">
               {activeTab === "description" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-3">About This Adventure</h2>
-                  <p className="text-white leading-relaxed">{adventure.description}</p>
+                  <h2 className="text-xl font-semibold mb-3">Description</h2>
+                  <p>{adventure.description}</p>
                 </div>
               )}
 
               {activeTab === "activities" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-3">Planned Activities</h2>
-                  <ul className="space-y-6">
-                    {adventure.activities.map((act, i) => (
+                  <h2 className="text-xl font-semibold mb-3">Activities</h2>
+                  <ul className="list-disc pl-6 space-y-2">
+                    {adventure.activities.map((activity, i) => (
                       <li key={i}>
-                        <p className="text-white leading-relaxed">
-                          <strong className="text-green-400">{act.name}</strong>: {act.description}
-                        </p>
+                        <strong>{activity.name}:</strong> {activity.description}
                       </li>
                     ))}
                   </ul>
@@ -251,13 +250,11 @@ const AdventuresDetails: React.FC = () => {
 
               {activeTab === "program" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-3">Our Plan of Action</h2>
-                  <ol className="space-y-6">
+                  <h2 className="text-xl font-semibold mb-3">Program</h2>
+                  <ol className="list-decimal pl-6 space-y-2">
                     {adventure.program.map((step, i) => (
                       <li key={i}>
-                        <p className="text-white leading-relaxed">
-                          <strong className="text-green-400">{step.day}</strong>: {step.description}
-                        </p>
+                        <strong>Day {step.day}:</strong> {step.description}
                       </li>
                     ))}
                   </ol>
@@ -265,111 +262,118 @@ const AdventuresDetails: React.FC = () => {
               )}
 
               {activeTab === "gears" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {adventure.gears.map((gear) => (
-                    <div key={gear._key} className="flex items-center space-x-4 p-2 bg-zinc-900 rounded-lg shadow">
-                      <Image
-                        src={urlFor(gear.icon).width(64).height(64).url()}
-                        alt={gear.name}
-                        width={64}
-                        height={64}
-                        className="object-contain"
-                      />
-                      <span className="font-medium capitalize text-xs sm:text-base text-white">
-                        {gear.name}
-                      </span>
-                    </div>
-                  ))}
+                <div>
+                  <h2 className="text-xl font-semibold mb-3">Gears</h2>
+                  <ul className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                    {adventure.gears.map((gear) => (
+                      <li
+                        key={gear._key}
+                        className="flex flex-col items-center text-center"
+                      >
+                        <Image
+                          src={urlFor(gear.icon).url()}
+                          alt={gear.name}
+                          width={60}
+                          height={60}
+                          className="mb-2"
+                        />
+                        <p className="text-sm">{gear.name}</p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
           </div>
 
           {/* Gallery */}
-          <div className="bg-zinc-950 rounded-xl shadow p-6">
-            <h2 className="text-xl uppercase text-green-400 font-semibold mb-6">Visual Journey</h2>
+          <div className="bg-zinc-950 rounded-xl shadow p-6 space-y-6">
+            <h2 className="text-xl font-semibold mb-4">Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {adventure.gallery.map((img, index) => (
-                <Image
-                  key={index}
-                  src={urlFor(img).url()}
-                  alt={`Gallery image ${index + 1}`}
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-cover hover:scale-105 transition-transform"
-                />
+              {adventure.gallery.map((img, i) => (
+                <div key={i} className="relative h-48 rounded overflow-hidden">
+                  <Image
+                    src={urlFor(img).url()}
+                    alt={`${adventure.title} gallery image ${i + 1}`}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="space-y-8">
-          {/* Video */}
-          <div className="bg-zinc-950 rounded-xl shadow p-4">
-            <h3 className="text-xl uppercase text-green-400 font-semibold mb-3">Watch Teaser</h3>
-            <div className="aspect-w-9 aspect-h-16">
-              <video
-                className="rounded-lg w-full h-full"
-                src={videoUrlFor(adventure.video)}
-                controls
-                muted
-                loop
-                playsInline
-              />
-            </div>
-          </div>
+        {/* Booking Form */}
+        <aside className="bg-zinc-950 rounded-xl shadow p-6">
+          <h3 className="text-lg font-bold mb-6 text-green-400 uppercase tracking-wide">
+            Book This Adventure
+          </h3>
 
-          {/* Booking Form */}
-          <div className="bg-zinc-950 rounded-xl shadow p-6 sticky top-10">
-            <h3 className="text-xl uppercase text-green-400 font-semibold mb-4 text-center">
-              Book Your Private Adventure
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <label className="block mb-1 font-medium">Select Date</label>
-                <input
-                  type="date"
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg"
-                  min={new Date().toISOString().split("T")[0]}
-                />
-              </div>
+          <label htmlFor="date" className="block text-white mb-1 text-sm font-semibold">
+            Select Date
+          </label>
+          <input
+            type="date"
+            id="date"
+            className="w-full rounded px-3 py-2 mb-4 bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            min={new Date().toISOString().split("T")[0]}
+          />
 
-              <div>
-                <label className="block mb-1 font-medium">Duration</label>
-                <select
-                  value={selectedDuration}
-                  onChange={(e) => setSelectedDuration(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg appearance-none"
-                >
-                  <option value="1" className="select-black">1 Day</option>
-                 
-                </select>
-              </div>
+          <label htmlFor="duration" className="block text-white mb-1 text-sm font-semibold">
+            Duration (days)
+          </label>
+          <select
+            id="duration"
+            className="w-full rounded px-3 py-2 mb-4 bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            value={selectedDuration}
+            onChange={(e) => setSelectedDuration(e.target.value)}
+          >
+            {[...Array(10)].map((_, i) => (
+              <option key={i + 1} value={`${i + 1}`}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
 
-              <div>
-                <label className="block mb-1 font-medium">Phone Number</label>
-                <input
-                  type="tel"
-                  placeholder="+216 20 123 456"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="w-full px-4 py-2 border rounded-lg placeholder-gray-400"
-                />
-              </div>
+          <label htmlFor="phone" className="block text-white mb-1 text-sm font-semibold">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            className="w-full rounded px-3 py-2 mb-6 bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            placeholder="Enter your phone number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
 
-              <button
-                onClick={handleBooking}
-                className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition"
-              >
-                Confirm Booking
-              </button>
-            </div>
-          </div>
-        </div>
+          <button
+            onClick={handleBooking}
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition"
+          >
+            Book Now
+          </button>
+        </aside>
       </div>
+
+      {/* Video Section */}
+      {adventure.video && (
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold mb-4 text-green-400">Adventure Video</h2>
+          <video
+            controls
+            preload="metadata"
+            className="w-full max-h-[500px] rounded-lg shadow-lg"
+            poster={urlFor(adventure.image).url()}
+            src={videoUrlFor(adventure.video)}
+          >
+            Sorry, your browser doesn&apos;t support embedded videos.
+          </video>
+        </div>
+      )}
     </section>
   );
 };

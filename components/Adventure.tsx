@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { client, urlFor } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/client';
+import { liveSanityFetch } from '@/sanity/lib/live';
 
 interface Activity {
   name: string;
@@ -34,7 +35,7 @@ async function getAdventures() {
     duration,
     activities
   }`;
-  const adventures: AdventureCard[] = await client.fetch(query);
+  const adventures: AdventureCard[] = (await liveSanityFetch({ query })).data;
 
   const camping = adventures.filter((adv) => adv.type === 'camping');
   const hiking = adventures.filter((adv) => adv.type === 'hiking');
@@ -65,7 +66,6 @@ const AdventureSection: React.FC = async () => {
               {card.tariff} TND
             </p>
 
-            {/* Separator */}
             <span className="text-green-400 font-semibold">|</span>
 
             <p className="bg-zinc-900 bg-opacity-80 px-2 py-1 rounded shadow-sm">
