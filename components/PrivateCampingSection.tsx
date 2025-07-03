@@ -90,7 +90,7 @@ const PrivateCampingSection: React.FC = () => {
         <h2 className="text-4xl md:text-5xl uppercase font-bold text-white text-center mb-3">
           Private Outings
         </h2>
-        <div className="w-16 h-1 bg-green-500 mx-auto rounded-full mb-10 shadow-lg"></div>
+        <div className="w-48 h-1 bg-green-500 mx-auto rounded-full mb-10 shadow-lg"></div>
 
         <div className="relative" ref={containerRef}>
           <div className="overflow-hidden rounded-xl ring-black/10">

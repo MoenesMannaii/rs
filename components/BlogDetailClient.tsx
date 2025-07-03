@@ -239,7 +239,7 @@ const BlogDetailClient: React.FC<BlogDetailClientProps> = ({ blog }) => {
           </div>
           <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
             {blog.whatToDo_gallery?.slice(0, 4).map((img, idx) => (
-              <div key={idx} className="relative w-full h-48 rounded overflow-hidden">
+              <div key={idx} className="relative w-full h-full rounded overflow-hidden">
                 <Image
                   src={img.asset.url}
                   alt={`WhatToDo ${idx + 1}`}
@@ -255,7 +255,7 @@ const BlogDetailClient: React.FC<BlogDetailClientProps> = ({ blog }) => {
         <section className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
             {blog.whyvisit_gallery?.slice(0, 4).map((img, idx) => (
-              <div key={idx} className="relative w-full h-48 rounded overflow-hidden">
+              <div key={idx} className="relative w-full h-full rounded overflow-hidden">
                 <Image
                   src={img.asset.url}
                   alt={`WhyVisit ${idx + 1}`}
