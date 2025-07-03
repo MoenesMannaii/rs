@@ -60,7 +60,7 @@ function Footer() {
           <Link href="https://www.instagram.com/runnaway.society?igsh=MXNsZWxxc2Rrb2Vmcg==" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
             <FaInstagram className="w-6 h-6" />
           </Link>
-          <Link href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
+          <Link href="https://www.facebook.com/profile.php?id=61555354556204" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
             <FaFacebook className="w-6 h-6" />
           </Link>
           <Link href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
