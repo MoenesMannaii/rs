@@ -230,31 +230,34 @@ const AdventuresDetails: React.FC = () => {
             <div className="mt-8 prose prose-lg max-w-none rounded-lg">
               {activeTab === "description" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-3">Description</h2>
+                  <h2 className="text-xl font-semibold mb-3">About this Adventure</h2>
                   <p>{adventure.description}</p>
                 </div>
               )}
 
               {activeTab === "activities" && (
-                <div>
-                  <h2 className="text-xl font-semibold mb-3">Activities</h2>
-                  <ul className="list-disc pl-6 space-y-2">
+                <ul className="space-y-6">
+               
+                  <h2 className="text-xl font-semibold mb-3">Planned Activities</h2>
                     {adventure.activities.map((activity, i) => (
                       <li key={i}>
-                        <strong>{activity.name}:</strong> {activity.description}
+                         <p className="text-white leading-relaxed">
+                        <strong className="text-green-400">{activity.name}:</strong> {activity.description}
+                        </p>
                       </li>
                     ))}
-                  </ul>
-                </div>
+                    </ul>
               )}
 
               {activeTab === "program" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-3">Program</h2>
-                  <ol className="list-decimal pl-6 space-y-2">
+                  <h2 className="text-xl font-semibold mb-3">Our Plan of Action</h2>
+                  <ol className="space-y-6">
                     {adventure.program.map((step, i) => (
                       <li key={i}>
-                        <strong>Day {step.day}:</strong> {step.description}
+                          <p className="text-white leading-relaxed">
+                        <strong className="text-green-400"> {step.day}:</strong> {step.description}
+                        </p>
                       </li>
                     ))}
                   </ol>
@@ -263,22 +266,22 @@ const AdventuresDetails: React.FC = () => {
 
               {activeTab === "gears" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-3">Gears</h2>
+                  <h2 className="text-xl font-semibold mb-3">Essential Gears</h2>
                   <ul className="grid grid-cols-2 sm:grid-cols-3 gap-6">
                     {adventure.gears.map((gear) => (
-                      <li
+                      <div
                         key={gear._key}
-                        className="flex flex-col items-center text-center"
+                        className="flex items-center space-x-4 p-2 bg-zinc-900 rounded-lg shadow"
                       >
                         <Image
                           src={urlFor(gear.icon).url()}
                           alt={gear.name}
                           width={60}
                           height={60}
-                          className="mb-2"
+                          className="object-contain"
                         />
-                        <p className="text-sm">{gear.name}</p>
-                      </li>
+                        <p className="ont-medium capitalize text-xs sm:text-base text-white">{gear.name}</p>
+                      </div>
                     ))}
                   </ul>
                 </div>
@@ -316,7 +319,7 @@ const AdventuresDetails: React.FC = () => {
           <input
             type="date"
             id="date"
-            className="w-full rounded px-3 py-2 mb-4 bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            className="w-full rounded px-3 py-2 mb-4 bg-zinc-900 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
             min={new Date().toISOString().split("T")[0]}
@@ -327,7 +330,7 @@ const AdventuresDetails: React.FC = () => {
           </label>
           <select
             id="duration"
-            className="w-full rounded px-3 py-2 mb-4 bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            className="w-full rounded px-3 py-2 appearance-none mb-4 bg-zinc-900 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
             value={selectedDuration}
             onChange={(e) => setSelectedDuration(e.target.value)}
           >
@@ -344,7 +347,7 @@ const AdventuresDetails: React.FC = () => {
           <input
             type="tel"
             id="phone"
-            className="w-full rounded px-3 py-2 mb-6 bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            className="w-full rounded px-3 py-2 mb-6 bg-zinc-900 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
             placeholder="Enter your phone number"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
@@ -363,6 +366,7 @@ const AdventuresDetails: React.FC = () => {
       {adventure.video && (
         <div className="max-w-7xl mx-auto px-4 py-12">
           <h2 className="text-2xl font-semibold mb-4 text-green-400">Adventure Video</h2>
+        
           <video
             controls
             preload="metadata"

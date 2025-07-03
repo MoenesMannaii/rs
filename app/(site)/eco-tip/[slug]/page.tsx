@@ -30,7 +30,7 @@ export default async function EcoTipPage({
   if (!tip) return notFound();
 
   return (
-    <main className="bg-black text-white min-h-screen py-24 px-4">
+    <main className="bg-black text-white min-h-screen py-28 px-4">
       <article className="max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-green-400 leading-tight">
           {tip.title}

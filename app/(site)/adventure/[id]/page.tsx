@@ -241,7 +241,10 @@ useEffect(() => {
               )}
 
               {activeTab === "gears" && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div>
+                <h2 className="text-xl font-semibold mb-3">Essential Gears</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                  
                   {adventure.gears.map((gear) => (
                     <div
                       key={gear._key}
@@ -259,6 +262,7 @@ useEffect(() => {
                       </span>
                     </div>
                   ))}
+                </div>
                 </div>
               )}
             </div>
@@ -283,53 +287,59 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Booking Sidebar */}
-        <div className="bg-zinc-950 rounded-xl shadow p-6 sticky top-10">
-          <h3 className="text-xl font-semibold mb-4 text-center">Book Your Adventure</h3>
-          <div className="space-y-4">
-            <div>
-              <label className="block mb-1 font-medium">Select Date</label>
-              <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg"
-                min={new Date().toISOString().split("T")[0]}
-              />
-            </div>
+         {/* Booking Form */}
+        <aside className="bg-zinc-950 rounded-xl shadow p-6">
+          <h3 className="text-lg font-bold mb-6 text-green-400 uppercase tracking-wide">
+            Book This Adventure
+          </h3>
 
-            <div>
-              <label className="block mb-1 font-medium">Duration</label>
-              <select
-                value={selectedDuration}
-                onChange={(e) => setSelectedDuration(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg appearance-none"
-              >
-               <option value="1" className="select-black">1 Day</option>
-                  <option value="2" className="select-black">2 Days</option>
-                 
-              </select>
-            </div>
+          <label htmlFor="date" className="block text-white mb-1 text-sm font-semibold">
+            Select Date
+          </label>
+          <input
+            type="date"
+            id="date"
+            className="w-full rounded px-3 py-2 mb-4 bg-zinc-900 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            min={new Date().toISOString().split("T")[0]}
+          />
 
-            <div>
-              <label className="block mb-1 font-medium">Phone Number</label>
-              <input
-                type="tel"
-                placeholder="+216 20 123 456"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg placeholder-gray-400"
-              />
-            </div>
+          <label htmlFor="duration" className="block text-white mb-1 text-sm font-semibold">
+            Duration (days)
+          </label>
+          <select
+            id="duration"
+            className="w-full rounded px-3 py-2 appearance-none mb-4 bg-zinc-900 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            value={selectedDuration}
+            onChange={(e) => setSelectedDuration(e.target.value)}
+          >
+            {[...Array(2)].map((_, i) => (
+              <option key={i + 1} value={`${i + 1}`}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
 
-            <button
-              onClick={handleBooking}
-              className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition"
-            >
-              Confirm Booking
-            </button>
-          </div>
-        </div>
+          <label htmlFor="phone" className="block text-white mb-1 text-sm font-semibold">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            className="w-full rounded px-3 py-2 mb-6 bg-zinc-900 text-white border border-zinc-700 focus:outline-none focus:border-green-600"
+            placeholder="Enter your phone number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+
+          <button
+            onClick={handleBooking}
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition"
+          >
+            Book Now
+          </button>
+        </aside>
       </div>
     </section>
   );

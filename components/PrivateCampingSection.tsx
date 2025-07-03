@@ -84,7 +84,7 @@ useEffect(() => {
 
   return (
     <section
-      className="py-16 bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 text-white select-none"
+      className="py-16 bg-zinc-950 text-white select-none"
       aria-label="Private Outings Carousel"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,7 +119,7 @@ useEffect(() => {
                         tabIndex={0}
                         aria-label={`${adventure.title} - ${adventure.duration} Day${Number(adventure.duration) > 1 ? 's' : ''
                           }`}
-                        className="relative rounded-xl overflow-hidden border border-zinc-700 bg-zinc-900 shadow-md hover:shadow-green-600/10 focus-within:shadow-green-500/80 transition-shadow duration-300 cursor-pointer"
+                        className="relative rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-md hover:shadow-green-600/10 focus-within:shadow-green-500/80 transition-shadow duration-300 cursor-pointer"
                       >
                         <div className="relative w-full h-64">
                           <Image
@@ -134,7 +134,7 @@ useEffect(() => {
                           />
                         </div>
 
-                        <div className="p-4 flex flex-col justify-between h-32 bg-gradient-to-t from-black/90 to-transparent rounded-b-xl">
+                        <div className="p-4 flex flex-col justify-between h-32 bg-zinc-950 rounded-b-xl">
                           <h3 className="text-lg font-extrabold tracking-wide text-white line-clamp-1 mb-1">
                             {adventure.title}
                           </h3>
@@ -161,7 +161,7 @@ useEffect(() => {
           <button
             onClick={prevSlide}
             aria-label="Previous Slide"
-            className="absolute top-1/2 -left-2 -translate-y-1/2 rounded-full bg-zinc-800 p-2.5 shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 transition"
+            className="absolute top-1/2 left-2 sm:-left-14 -translate-y-1/2 rounded-full bg-zinc-800 p-2.5 shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 transition"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +178,7 @@ useEffect(() => {
           <button
             onClick={nextSlide}
             aria-label="Next Slide"
-            className="absolute top-1/2 -right-2 -translate-y-1/2 rounded-full bg-zinc-800 p-2.5 shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 transition"
+            className="absolute top-1/2 right-2 sm:-right-14 -translate-y-1/2 rounded-full bg-zinc-800 p-2.5 shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 transition"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
