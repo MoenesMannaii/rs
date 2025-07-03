@@ -57,13 +57,13 @@ function Footer() {
         </p>
 
         <div className="flex -mx-2 space-x-4">
-          <Link href="https://www.instagram.com/runnaway.society?igsh=MXNsZWxxc2Rrb2Vmcg==" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
+          <Link href="https://www.instagram.com/runnaway.society?igsh=MXNsZWxxc2Rrb2Vmcg==" target='blank' className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Instagram">
             <FaInstagram className="w-6 h-6" />
           </Link>
-          <Link href="https://www.facebook.com/profile.php?id=61555354556204" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
+          <Link href="https://www.facebook.com/profile.php?id=61555354556204" target='blank' className="text-white hover:text-green-500 transition-colors duration-300" aria-label="Facebook">
             <FaFacebook className="w-6 h-6" />
           </Link>
-          <Link href="#" className="text-white hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
+          <Link href="https://wa.me/21694021925" target='blank' className="text-white hover:text-green-500 transition-colors duration-300" aria-label="WhatsApp">
             <FaWhatsapp className="w-6 h-6" />
           </Link>
         </div>
